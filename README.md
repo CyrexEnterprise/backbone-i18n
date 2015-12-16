@@ -2,61 +2,52 @@
 
 Content internalization and localization (i18n) with Backbone and Mustache
 
-Provide translations as keyphrase to translated content
+## Features
 
-```json
-{
-  "keyPhrase": "translatedKeyPhrase",
-  "Name": "Nome",
-  "First Name": "Primeiro Nome"
-}
-```
+- Translation specific elements in Mustache templates;
+- Global access to the translations through Javacript variables;
+- Possibility to request the translations from an external API;
 
-You can call the `_i18n_` function to translate content on a template:
+## Requirements
 
-```html
-  {{#_i18n_}}{{title}}{{/_i18n_}}
-  {{#_i18n_}}Something to be translated{{/_i18n_}}
-```
+- [backbonejs](http://backbonejs.org/)
+- [mustache.js](https://github.com/janl/mustache.js/)
 
-Content rendered within the `{{_i18n_}}` will be used as keyphrase
+## Instalation
 
-### Instalation
+- **Script Tag:** `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-mustache-i18n/blob/master/index.js"></script>`
+- **Bower:** `bower install git://github.com/Cloudoki/backbone-mustache-i18n.git`
+- **npm:** `npm install github:Cloudoki/backbone-mustache-i18n`
 
-Requirements: Backbone and Mustache
+### Usage
 
-With script Tag `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-mustache-i18n/blob/master/index.js"></script>`
-
-With Bower `bower install git://github.com/Cloudoki/backbone-mustache-i18n.git`
-
-With npm `npm install github:Cloudoki/backbone-mustache-i18n`
-
-### Example Usage
+#### Initialize the plugin:
 
 ```javascript
+  // Define your transations
   var translations = {
     'Hello World!': 'Olá Mundo!'
   };
 
-  var i18n = new I18n();
+  var i18n = new I18n();                  // Initialize the translations plugin
+  i18n.set(translations);                 // Apply the translations
+```
 
-  i18n.set(translations);
+#### Translations available through Mustache:
 
+After initializing the plugin, the translations will be automatically hooked up with the Mustache object:
+```javascript
+  var template = "{{#_i18n_}}{{title}}{{/_i18n_}}";
+  this.$el.html(Mustache.render( template, {title: 'Hello World!'}));     // Render
+```
+
+#### Access Translations on Javascript:
+
+```
+You can also access the translations through Javascript variables:
+```javascript
   console.log(i18n.translate('Hello World!')); // Olá Mundo!
   console.log(i18n.translate('lost in translation')); // lost in translation
-
-  var GreetingView = Backbone.View.extend({
-    el: document.getElementById('title'),
-    render: function() {
-      this.$el.html(Mustache.render('{{#_i18n_}}{{title}}{{/_i18n_}}', {
-        title: 'Hello World!'
-      }));
-
-      return this;
-    }
-  });
-
-  new GreetingView().render();
 ```
 
 ### Fetch translations from resource API
