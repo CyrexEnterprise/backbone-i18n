@@ -36,6 +36,7 @@ Content internalization and localization (i18n) with Backbone and Mustache
 #### Translations available through Mustache:
 
 After initializing the plugin, the translations will be automatically hooked up with the Mustache object:
+
 ```javascript
   var template = "{{#_i18n_}}{{title}}{{/_i18n_}}";
   this.$el.html(Mustache.render( template, {title: 'Hello World!'}));     // Render
@@ -43,8 +44,8 @@ After initializing the plugin, the translations will be automatically hooked up 
 
 #### Access Translations on Javascript:
 
-```
 You can also access the translations through Javascript variables:
+
 ```javascript
   console.log(i18n.translate('Hello World!')); // Olá Mundo!
   console.log(i18n.translate('lost in translation')); // lost in translation
