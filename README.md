@@ -21,6 +21,16 @@ You can call the `_i18n_` function to translate content on a template:
 
 Content rendered within the `{{_i18n_}}` will be used as keyphrase
 
+### Instalation
+
+Requirements: Backbone and Mustache
+
+With script Tag `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-mustache-i18n/blob/master/index.js"></script>`
+
+With Bower `bower install git://github.com/Cloudoki/backbone-mustache-i18n.git`
+
+With npm `npm install github:Cloudoki/backbone-mustache-i18n`
+
 ### Example Usage
 
 ```javascript
