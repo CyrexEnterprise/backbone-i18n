@@ -51,7 +51,7 @@
     /**
      * translates key phrase given to current locale data
      *
-     * @param key
+     * @param {string} key phrase
      * @returns {string} translation or key phrase if translation not found
      */
     translate: function(key) {

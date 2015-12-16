@@ -1,0 +1,28 @@
+{
+  "name": "backbone-mustache-i18n",
+  "version": "1.0.0",
+  "description": "Content internalization and localization (i18n) with Backbone and Mustache",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cloudoki/backbone-mustache-i18n.git"
+  },
+  "keywords": [
+    "backbone",
+    "mustache",
+    "i18n"
+  ],
+  "author": "Edgar Ribeiro",
+  "email:": "edgar@cloudoki.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cloudoki/backbone-mustache-i18n/issues"
+  },
+  "homepage": "https://github.com/Cloudoki/backbone-mustache-i18n#readme"
+}
