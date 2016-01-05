@@ -29,13 +29,20 @@
       //monkey-patch Mustache render to include on all views the
       //  authorizations (_i18n_)
       Mustache.render = function(template, view) {
-        view._i18n_ = function() {
+        var i18n = function() {
           return function(text, render) {
             //render text and attempt to translate it
             return self.translate(render(text));
           }
         };
-        return defaultRender.apply(this, arguments);
+        if (!view) {
+          return defaultRender.apply(this, [template, {
+            _i18n_: i18n
+          }]);
+        } else {
+          view._i18n_ = i18n;
+          return defaultRender.apply(this, arguments);
+        }
       };
     },
 
