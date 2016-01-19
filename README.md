@@ -5,8 +5,8 @@ Content internalization and localization (i18n) with Backbone and Mustache
 ## Features
 
 - Translation specific elements in Mustache templates;
-- Global access to the translations through Javacript variables;
-- Possibility to request the translations from an external API;
+- Global access to the translations through Javascript variables;
+- Request the translations from an external API;
 
 ## Requirements
 
@@ -15,9 +15,9 @@ Content internalization and localization (i18n) with Backbone and Mustache
 
 ## Instalation
 
-- **Script Tag:** `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-mustache-i18n/blob/master/index.js"></script>`
-- **Bower:** `bower install git://github.com/Cloudoki/backbone-mustache-i18n.git`
-- **npm:** `npm install github:Cloudoki/backbone-mustache-i18n`
+- **Script Tag:** `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-i18n/blob/master/index.js"></script>`
+- **Bower:** `bower install git://github.com/Cloudoki/backbone-i18n.git`
+- **npm:** `npm install github:Cloudoki/backbone-i18n`
 
 ### Usage
 
@@ -35,7 +35,8 @@ Content internalization and localization (i18n) with Backbone and Mustache
 
 #### Translations available through Mustache:
 
-After initializing the plugin, the translations will be automatically hooked up with the Mustache object:
+After initializing the plugin, the translations will be automatically hooked up to
+Mustache:
 
 ```javascript
   var template = "{{#_i18n_}}{{title}}{{/_i18n_}}";
@@ -54,6 +55,8 @@ You can also access the translations through Javascript variables:
 ### Fetch translations from resource API
 
 ```javascript
+// You will need to extend the i18n Backbone Model
+// to provide the translations resource url
 var xi18n = I18n.extend({
   url: function(){
     return '/translations/' + this.locale ? this.locale : 'en-GB';
@@ -65,7 +68,19 @@ var i18n = new xi18n();
 i18n.setLocale('pt-PT');
 i18n.fetch({
   success: function(){
-    console.log('translations loaded');  
+    console.log('translations loaded');
   },
 });
 ```
+
+### Check the examples
+
+You will need a static server
+
+`npm install -g http-server`
+
+Serve the entire project directory
+
+`http-server ./`
+
+Open your browser at `http://127.0.0.1:8080/examples/`

@@ -1,18 +1,17 @@
-(function(root, main) {
+(function (root, factory) {
   // AMD
   if (typeof define === 'function' && define.amd) {
-    define(['backbone', 'mustache'],
-      function(Backbone, Mustache) {
-        return main(Backbone, Mustache);
-      });
+    define(['backbone', 'mustache'], factory);
     // CommonJS
-  } else if (typeof exports !== 'undefined' && typeof require !== 'undefined') {
-    module.exports = main(require('backbone'), require('mustache'));
+  } else if (typeof module === 'object' && module.exports && require) {
+    module.exports = factory(require('backbone'), require('mustache'));
     // Globals
   } else {
-    root.I18n = main(root.Backbone, root.Mustache);
+    /* eslint-disable no-param-reassign */
+    root.I18n = factory(root.Backbone, root.Mustache);
+    /* eslint-enable no-param-reassign */
   }
-})(this, function(Backbone, Mustache) {
+})(this, function (Backbone, Mustache) {
   'use strict';
 
   /**
@@ -20,30 +19,31 @@
    */
   return Backbone.Model.extend({
     // Method called when i18n model is initialized with new constructor
-    initialize: function() {
+    initialize: function () {
       var self = this;
 
       // define default mustache render at initialization
       var defaultRender = Mustache.render;
 
-      //monkey-patch Mustache render to include on all views the
+      // Monkey-patch Mustache render to include on all views the
       //  authorizations (_i18n_)
-      Mustache.render = function(template, view) {
-        var i18n = function() {
-          return function(text, render) {
-            //render text and attempt to translate it
+      /* eslint-disable no-param-reassign */
+      Mustache.render = function (template, view) {
+        var i18n = function () {
+          return function (text, render) {
+            // render text and attempt to translate it
             return self.translate(render(text));
-          }
+          };
         };
         if (!view) {
           return defaultRender.apply(this, [template, {
             _i18n_: i18n
           }]);
-        } else {
-          view._i18n_ = i18n;
-          return defaultRender.apply(this, arguments);
         }
+        view._i18n_ = i18n;
+        return defaultRender.apply(this, arguments);
       };
+      /* eslint-enable no-param-reassign */
     },
 
     /**
@@ -51,17 +51,17 @@
      *
      * @param {string} locale key value
      */
-    setLocale: function(locale) {
+    setLocale: function (locale) {
       this.locale = locale;
     },
 
     /**
-     * translates key phrase given to current locale data
+     * Translates key phrase given to current locale data
      *
      * @param {string} key phrase
      * @returns {string} translation or key phrase if translation not found
      */
-    translate: function(key) {
+    translate: function (key) {
       return this.get(key) ? this.get(key) : key;
     }
   });
