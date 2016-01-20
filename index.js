@@ -26,7 +26,7 @@
       var defaultRender = Mustache.render;
 
       // Monkey-patch Mustache render to include on all views the
-      //  authorizations (_i18n_)
+      //  translations (_i18n_)
       /* eslint-disable no-param-reassign */
       Mustache.render = function (template, view) {
         var i18n = function () {
@@ -56,8 +56,6 @@
     },
 
     /**
-     * Translates key phrase given to current locale data
-     *
      * @param {string} key phrase
      * @returns {string} translation or key phrase if translation not found
      */
