@@ -15,7 +15,7 @@ Content internalization and localization (i18n) with Backbone and Mustache
 
 ## Instalation
 
-- **Script Tag:** `<script type="text/javascript" src="https://github.com/Cloudoki/backbone-i18n/blob/master/index.js"></script>`
+- **Script Tag:** `<script type="text/javascript" src="http://cdn.rawgit.com/Cloudoki/backbone-i18n/master/index.js"></script>`
 - **Bower:** `bower install git://github.com/Cloudoki/backbone-i18n.git`
 - **npm:** `npm install github:Cloudoki/backbone-i18n`
 
