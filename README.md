@@ -13,7 +13,7 @@ Content internalization and localization (i18n) with Backbone and Mustache
 - [backbonejs](http://backbonejs.org/)
 - [mustache.js](https://github.com/janl/mustache.js/)
 
-## Instalation
+## Installation
 
 - **Script Tag:** `<script type="text/javascript" src="http://cdn.rawgit.com/Cloudoki/backbone-i18n/master/index.js"></script>`
 - **Bower:** `bower install git://github.com/Cloudoki/backbone-i18n.git`
@@ -24,7 +24,7 @@ Content internalization and localization (i18n) with Backbone and Mustache
 #### Initialize the plugin:
 
 ```javascript
-  // Define your transations
+  // Define your translations
   var translations = {
     'Hello World!': 'Olá Mundo!'
   };
